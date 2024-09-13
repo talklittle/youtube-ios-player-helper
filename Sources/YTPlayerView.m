@@ -907,6 +907,11 @@ createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
   WKWebViewConfiguration *webViewConfiguration = [[WKWebViewConfiguration alloc] init];
   webViewConfiguration.allowsInlineMediaPlayback = YES;
   webViewConfiguration.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
+
+  if (@available(iOS 15.4, *)) {
+    webViewConfiguration.preferences.elementFullscreenEnabled = YES;
+  }
+
   WKWebView *webView = [[WKWebView alloc] initWithFrame:self.bounds
                                           configuration:webViewConfiguration];
   webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
